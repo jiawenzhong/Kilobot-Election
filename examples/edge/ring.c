@@ -314,11 +314,11 @@ void recv_election(uint8_t *payload){
     //TODO: check if w < min_id
     //ignoring irrelevant messages
 
-    printf("recv_election - global min: %d\n" , w); 
-    if (payload[ID] == mydata->my_id  || payload[ID] == 0 ) return;
+    printf("recv_election - my_id: %d global min: %d, m: %d\n" , v,  w, m); 
+    //if (payload[ID] == mydata->my_id  || payload[ID] == 0 ) return;
 
 
-    //if sender set me as left, set sender as my right
+    /* //if sender set me as left, set sender as my right
     if (payload[LEFT_ID] == mydata->my_id)
     {
     	mydata->my_right = payload[SENDER];
@@ -327,12 +327,12 @@ void recv_election(uint8_t *payload){
     if (payload[RIGHT_ID] == mydata->my_id)
     {
 	    mydata->my_left = payload[SENDER];
-    }
+    } */
     
     //if global is less than local
     if(w < m){
         mydata->min_id = w;
-        printf("recv_election - w < m mydata->min_id %d\n", m);
+        //printf("recv_election - w < m mydata->min_id %d\n", m);
         printf("recv_election - w < m mydata->my_id: %d mydata->min_id: %d MINID: %d\n" , v, mydata->min_id, w);
         mydata->send_election = TRUE;
     // if new node id is not less than minimum, pass on the election
@@ -347,18 +347,18 @@ void recv_election(uint8_t *payload){
         mydata->blue = 3;
     }
 
-    if (w != v){
+    /* if (w != v){
         mydata->send_elected = FALSE;
         mydata->blue = 0;
         printf("recv_elected - w != v id: %d\n", mydata->my_id);
         printf("not elected\n");
         
-    }
+    } */
 
 
-    #ifdef SIMULATOR
+    /* #ifdef SIMULATOR
         printf("%d Left: %d Right: %d\n", mydata->my_id, mydata->my_left, mydata->my_right);
-    #endif
+    #endif */
 }
 
 //! get elected information and sets the color
@@ -414,8 +414,9 @@ void message_rx(message_t *m, distance_measurement_t *d)
                 recv_move(m->data);
                 break;
             case ELECTED:// TODO: DONE
+                printf("message_rx: [ID]: %d my_left: %d\n", m->data[ID], mydata->my_left);
                 if(m->data[ID] == mydata->my_left){
-                    recv_election(m->data);
+                    recv_elected(m->data);
                     printf("message_rx - elected\n");
                 }
                 break;
@@ -452,6 +453,14 @@ char enqueue_message(uint8_t m)
         //Sending Master Statues 
         //mydata->message[mydata->tail].data[MASTER] = mydata->master;
     
+        // TODO: use the 8 bytes
+        if(m == ELECTION || m == ELECTED){
+            //TODO: what is MINID? End of the byte in the payload, or declare in struct, data[minID] = midID FIX
+            mydata->message[mydata->tail].data[MINID] = mydata->min_id;
+        } else {
+            // TODO: What do we put here??? for other stuff, ELECTED
+        }
+
         mydata->message[mydata->tail].type = NORMAL;
         mydata->message[mydata->tail].crc = message_crc(&mydata->message[mydata->tail]);
         mydata->tail++;
@@ -459,13 +468,13 @@ char enqueue_message(uint8_t m)
         return 1;
     }
 
-    // TODO: use the 8 bytes
+    /* // TODO: use the 8 bytes
     if(m == ELECTION || m == ELECTED){
         //TODO: what is MINID? End of the byte in the payload, or declare in struct, data[minID] = midID FIX
         mydata->message[mydata->tail].data[MINID] = mydata->min_id;
     } else {
         // TODO: What do we put here??? for other stuff, ELECTED
-    }
+    } */
     return 0;
 }
 
@@ -507,18 +516,20 @@ void send_joining()
 void send_election(){
     uint8_t i;
     /* precondition  */
-    if (mydata->send_election == TRUE && mydata->state == COOPERATIVE && !isQueueFull())
+    if (mydata->send_election == TRUE && !isQueueFull())
     {
 
             // effect:
             mydata->send_election = FALSE;
             enqueue_message(ELECTION);
             //mydata->sent_status = TRUE;
-            printf("send_election - id: %d sending election\n", mydata->my_id );
+            printf("send_election - id: %d min_id: %d sending election\n", mydata->my_id , mydata->min_id);
 #ifdef SIMULATOR
             printf("Sending Joining %d right=%d left=%d\n", mydata->my_id, mydata->my_right, mydata->my_left);
 #endif
         
+    } else if (mydata->send_election == TRUE && isQueueFull){
+        //printf("queue full \n");
     }
     /* if (mydata->send_elected == TRUE){
         printf("send_elected - id: %d sending elected\n", mydata->my_id );
@@ -529,13 +540,13 @@ void send_election(){
 }
 
 // send elected information to all node
-/* void send_elected(){
-    if (mydata->send_elected == TRUE){
+void send_elected(){
+    if (mydata->send_elected == TRUE && !isQueueFull()){
         printf("send_elected - id: %d sending elected\n", mydata->my_id );
         mydata->send_elected = FALSE;
         enqueue_message(ELECTED);
     }
-} */
+}
 
 //! not being use in here
 void send_sharing()
@@ -624,7 +635,7 @@ void reset_self()
     mydata->send_elected = FALSE;
     mydata->send_election = FALSE;
     mydata->sent_status = FALSE;
-    mydata->message[mydata->tail].data[MINID] = mydata->min_id;//reset the global min
+    //mydata->message[mydata->tail].data[MINID] = mydata->min_id;//reset the global min
 }
 //!This function is called when message_recv_delay is > than X time Specific to ring
 void remove_neighbor(nearest_neighbor_t lost)
@@ -668,11 +679,11 @@ void remove_neighbor(nearest_neighbor_t lost)
 void loop()
 {
     delay(30);
-    
+    send_election();
     //send_move();
     send_joining();
-    //send_elected();
-    send_election();
+    send_elected();
+    
     send_sharing();
 
     move(mydata->now);
@@ -790,7 +801,7 @@ void setup() {
     mydata->send_election = FALSE;
     mydata->sent_status = FALSE;
     mydata->min_id = mydata->my_id;
-    mydata->message[mydata->tail].data[MINID] = mydata->min_id;
+    //mydata->message[mydata->tail].data[MINID] = mydata->min_id;
 
     
 
