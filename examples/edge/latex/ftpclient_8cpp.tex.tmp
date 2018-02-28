@@ -1,0 +1,224 @@
+\hypertarget{ftpclient_8cpp}{}\section{ftpclient.\+cpp File Reference}
+\label{ftpclient_8cpp}\index{ftpclient.\+cpp@{ftpclient.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+Include dependency graph for ftpclient.\+cpp\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ftpclient_8cpp_af7b7dc9a200cb1404c280bd500fd1551}{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}~2048
+\item 
+\#define \hyperlink{ftpclient_8cpp_a96d13532625730eddbdf008e03926fc8}{W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME}~1000000
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{ftpclient_8cpp_ac1f1f6f2d41dcafa883cd0481f642aec}{create\+\_\+connection} (std\+::string host, int port)
+\begin{DoxyCompactList}\small\item\em this create the connection with the F\+TP address \end{DoxyCompactList}\item 
+int \hyperlink{ftpclient_8cpp_ac2aa65001102647fd5589df6bcfe9a03}{request} (int sock, std\+::string message)
+\begin{DoxyCompactList}\small\item\em request reply from server \end{DoxyCompactList}\item 
+std\+::string \hyperlink{ftpclient_8cpp_a0a7aa7cf7186b69af4a474ae41119998}{reply} (int s)
+\begin{DoxyCompactList}\small\item\em this gets the reply from the server \end{DoxyCompactList}\item 
+std\+::string \hyperlink{ftpclient_8cpp_a840b4375f11a425e5e3e26bea0d574f4}{request\+\_\+reply} (int s, std\+::string message)
+\begin{DoxyCompactList}\small\item\em this request reply from server \end{DoxyCompactList}\item 
+string \hyperlink{ftpclient_8cpp_a7180eccdb6a329e3561b79b773782ff9}{passive} (int sockpi)
+\begin{DoxyCompactList}\small\item\em this connects the passive \end{DoxyCompactList}\item 
+int \hyperlink{ftpclient_8cpp_a98736da8cac28c6393d0d230b1c7bc18}{connect} (string passive\+Return)
+\item 
+void \hyperlink{ftpclient_8cpp_aa8bf714fcd9096303d22e53819a4c6c2}{close\+Connection} (int sockpi)
+\begin{DoxyCompactList}\small\item\em this closes the connection \end{DoxyCompactList}\item 
+void \hyperlink{ftpclient_8cpp_a12c15e86b6722a733e6be6160659ae2c}{check\+File\+Transfer} (int sockpi)
+\begin{DoxyCompactList}\small\item\em this checks if all files are finish transfer \end{DoxyCompactList}\item 
+void \hyperlink{ftpclient_8cpp_a7f56702a3c18e3109ff23d66b4ed5d10}{command} (int sockpi, string choice)
+\begin{DoxyCompactList}\small\item\em execute the command that the user has entered \end{DoxyCompactList}\item 
+int \hyperlink{ftpclient_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ftpclient_8cpp_af7b7dc9a200cb1404c280bd500fd1551}\label{ftpclient_8cpp_af7b7dc9a200cb1404c280bd500fd1551}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH}{BUFFER\_LENGTH}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+L\+E\+N\+G\+TH~2048}
+
+C++ client example using sockets. This programs can be compiled in linux and with minor modification in mac (mainly on the name of the headers) Windows requires extra lines of code and different headers \#define W\+I\+N32\+\_\+\+L\+E\+A\+N\+\_\+\+A\+N\+D\+\_\+\+M\+E\+AN
+
+\#include $<$windows.\+h$>$ \#include $<$winsock2.\+h$>$ \#include $<$ws2tcpip.\+h$>$
+
+Need to link with Ws2\+\_\+32.\+lib, Mswsock.\+lib, and Advapi32.\+lib \#pragma comment(lib, \char`\"{}\+Ws2\+\_\+32.\+lib\char`\"{}) ... W\+S\+A\+D\+A\+TA wsa\+Data; i\+Result = W\+S\+A\+Startup(\+M\+A\+K\+E\+W\+O\+R\+D(2,2), \&wsa\+Data); ...
+
+Name\+: Kaicie Messer, Jiawen Zhong, Eunice Chinchilla \mbox{\Hypertarget{ftpclient_8cpp_a96d13532625730eddbdf008e03926fc8}\label{ftpclient_8cpp_a96d13532625730eddbdf008e03926fc8}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME@{W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME}}
+\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME@{W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME}{WAITING\_TIME}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T\+I\+N\+G\+\_\+\+T\+I\+ME~1000000}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ftpclient_8cpp_a12c15e86b6722a733e6be6160659ae2c}\label{ftpclient_8cpp_a12c15e86b6722a733e6be6160659ae2c}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!check\+File\+Transfer@{check\+File\+Transfer}}
+\index{check\+File\+Transfer@{check\+File\+Transfer}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{check\+File\+Transfer()}{checkFileTransfer()}}
+{\footnotesize\ttfamily void check\+File\+Transfer (\begin{DoxyParamCaption}\item[{int}]{sockpi }\end{DoxyParamCaption})}
+
+
+
+this checks if all files are finish transfer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockpi} & the socket number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ftpclient_8cpp_aa8bf714fcd9096303d22e53819a4c6c2}\label{ftpclient_8cpp_aa8bf714fcd9096303d22e53819a4c6c2}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!close\+Connection@{close\+Connection}}
+\index{close\+Connection@{close\+Connection}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{close\+Connection()}{closeConnection()}}
+{\footnotesize\ttfamily void close\+Connection (\begin{DoxyParamCaption}\item[{int}]{sockpi }\end{DoxyParamCaption})}
+
+
+
+this closes the connection 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockpi} & the socket number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ftpclient_8cpp_a7f56702a3c18e3109ff23d66b4ed5d10}\label{ftpclient_8cpp_a7f56702a3c18e3109ff23d66b4ed5d10}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!command@{command}}
+\index{command@{command}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{command()}{command()}}
+{\footnotesize\ttfamily void command (\begin{DoxyParamCaption}\item[{int}]{sockpi,  }\item[{string}]{choice }\end{DoxyParamCaption})}
+
+
+
+execute the command that the user has entered 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockpi} & the socket number \\
+\hline
+{\em sockpi2} & the socket number that gets the file \\
+\hline
+{\em choice} & user input command \\
+\hline
+\end{DoxyParams}
+$<$ store the status number from reply
+
+$<$ reply from command
+
+close all connections
+
+extract the return status
+
+check if file is open correctly
+
+store the text into the file
+
+check connection \mbox{\Hypertarget{ftpclient_8cpp_a98736da8cac28c6393d0d230b1c7bc18}\label{ftpclient_8cpp_a98736da8cac28c6393d0d230b1c7bc18}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!connect@{connect}}
+\index{connect@{connect}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily int connect (\begin{DoxyParamCaption}\item[{string}]{passive\+Return }\end{DoxyParamCaption})}
+
+create port \mbox{\Hypertarget{ftpclient_8cpp_ac1f1f6f2d41dcafa883cd0481f642aec}\label{ftpclient_8cpp_ac1f1f6f2d41dcafa883cd0481f642aec}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!create\+\_\+connection@{create\+\_\+connection}}
+\index{create\+\_\+connection@{create\+\_\+connection}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{create\+\_\+connection()}{create\_connection()}}
+{\footnotesize\ttfamily int create\+\_\+connection (\begin{DoxyParamCaption}\item[{std\+::string}]{host,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+this create the connection with the F\+TP address 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & the ip address of the server \\
+\hline
+{\em port} & the port number to connect to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ftpclient_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{ftpclient_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!main@{main}}
+\index{main@{main}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ftpclient_8cpp_a7180eccdb6a329e3561b79b773782ff9}\label{ftpclient_8cpp_a7180eccdb6a329e3561b79b773782ff9}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!passive@{passive}}
+\index{passive@{passive}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{passive()}{passive()}}
+{\footnotesize\ttfamily string passive (\begin{DoxyParamCaption}\item[{int}]{sockpi }\end{DoxyParamCaption})}
+
+
+
+this connects the passive 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockpi} & the socket number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ftpclient_8cpp_a0a7aa7cf7186b69af4a474ae41119998}\label{ftpclient_8cpp_a0a7aa7cf7186b69af4a474ae41119998}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!reply@{reply}}
+\index{reply@{reply}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{reply()}{reply()}}
+{\footnotesize\ttfamily std\+::string reply (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+this gets the reply from the server 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & the socket number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ftpclient_8cpp_ac2aa65001102647fd5589df6bcfe9a03}\label{ftpclient_8cpp_ac2aa65001102647fd5589df6bcfe9a03}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!request@{request}}
+\index{request@{request}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily int request (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+request reply from server 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockpi} & the socket number \\
+\hline
+{\em message} & the message sent to the server \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ftpclient_8cpp_a840b4375f11a425e5e3e26bea0d574f4}\label{ftpclient_8cpp_a840b4375f11a425e5e3e26bea0d574f4}} 
+\index{ftpclient.\+cpp@{ftpclient.\+cpp}!request\+\_\+reply@{request\+\_\+reply}}
+\index{request\+\_\+reply@{request\+\_\+reply}!ftpclient.\+cpp@{ftpclient.\+cpp}}
+\subsubsection{\texorpdfstring{request\+\_\+reply()}{request\_reply()}}
+{\footnotesize\ttfamily std\+::string request\+\_\+reply (\begin{DoxyParamCaption}\item[{int}]{s,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+this request reply from server 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & the socket number \\
+\hline
+{\em message} & the command for the server \\
+\hline
+\end{DoxyParams}

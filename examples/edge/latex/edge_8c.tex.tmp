@@ -1,0 +1,240 @@
+\hypertarget{edge_8c}{}\section{edge.\+c File Reference}
+\label{edge_8c}\index{edge.\+c@{edge.\+c}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$kilombo.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}edge.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+Include dependency graph for edge.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMyUserdata}{My\+Userdata}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{edge_8c_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{edge_8c_a06fc87d81c62e9abb8790b6e5713c55ba679ee5320d66c8322e310daeb2ee99b8}{S\+T\+OP}, 
+\hyperlink{edge_8c_a06fc87d81c62e9abb8790b6e5713c55badb45120aafd37a973140edee24708065}{L\+E\+FT}, 
+\hyperlink{edge_8c_a06fc87d81c62e9abb8790b6e5713c55baec8379af7490bb9eaaf579cf17876f38}{R\+I\+G\+HT}, 
+\hyperlink{edge_8c_a06fc87d81c62e9abb8790b6e5713c55ba08707fd429345dc72f3d7b0cc867ef05}{S\+T\+R\+A\+I\+G\+HT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{edge_8c_a5760adaea4991d218d6cea8486847748}{rxbuffer\+\_\+push} (message\+\_\+t $\ast$msg, distance\+\_\+measurement\+\_\+t $\ast$dist)
+\item 
+message\+\_\+t $\ast$ \hyperlink{edge_8c_a7fe98b6e71da81f72143305f649beb63}{message\+\_\+tx} ()
+\item 
+void \hyperlink{edge_8c_a4d2182f49c70e3be805d8d88d9530c09}{set\+\_\+bot\+\_\+state} (int state)
+\item 
+int \hyperlink{edge_8c_aa1e8592ce585a7636d8387f6d9ce2005}{get\+\_\+bot\+\_\+state} (void)
+\item 
+void \hyperlink{edge_8c_a6f7537b0199d34b39bebe6e95067899f}{set\+\_\+move\+\_\+type} (int type)
+\item 
+int \hyperlink{edge_8c_ac4622a252dbf9157160aec77cc919b5f}{get\+\_\+move\+\_\+type} (void)
+\item 
+void \hyperlink{edge_8c_aaaa542ed11f0470f15a18b01754e7058}{process\+\_\+message} ()
+\item 
+void \hyperlink{edge_8c_a690a24778edc10152141d176d8561f17}{purge\+Neighbors} (void)
+\item 
+void \hyperlink{edge_8c_a4bd27dd458300c3975a3182332ea7107}{setup\+\_\+message} (void)
+\item 
+void \hyperlink{edge_8c_a4fc01d736fe50cf5b977f755b675f11d}{setup} ()
+\item 
+void \hyperlink{edge_8c_a24c6617ac02c04b29d7e43735f5f9c46}{receive\+\_\+inputs} ()
+\item 
+uint8\+\_\+t \hyperlink{edge_8c_a9b12c2fd6b94ac72f0e788ede912841f}{get\+\_\+dist\+\_\+by\+\_\+\+ID} (uint16\+\_\+t bot)
+\item 
+uint8\+\_\+t \hyperlink{edge_8c_a4388e24cf515f134787861f2c4d09be7}{find\+\_\+nearest\+\_\+\+N\+\_\+dist} ()
+\item 
+void \hyperlink{edge_8c_a0c3c559f8dc2c318e09e9609c2241ea1}{follow\+\_\+edge} ()
+\item 
+void \hyperlink{edge_8c_afe461d27b9c48d5921c00d521181f12f}{loop} ()
+\item 
+char $\ast$ \hyperlink{edge_8c_acb25f410377c3486ffd82b9d48b6071f}{botinfo} (void)
+\item 
+int \hyperlink{edge_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{edge_8c_ae7abfd7efb0bff954a651ad1f174d993}{color\+Num} \mbox{[}$\,$\mbox{]}
+\item 
+char $\ast$($\ast$ \hyperlink{edge_8c_a833cd7ecdaa408f530e259af777e1ad6}{callback\+\_\+botinfo} )(void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{edge_8c_ad72dbcf6d0153db1b8d8a58001feed83}\label{edge_8c_ad72dbcf6d0153db1b8d8a58001feed83}} 
+\index{edge.\+c@{edge.\+c}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+B\+UG}{DEBUG}}
+{\footnotesize\ttfamily \#define D\+E\+B\+UG}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{edge_8c_a06fc87d81c62e9abb8790b6e5713c55b}\label{edge_8c_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+OP@{S\+T\+OP}!edge.\+c@{edge.\+c}}\index{edge.\+c@{edge.\+c}!S\+T\+OP@{S\+T\+OP}}}\mbox{\Hypertarget{edge_8c_a06fc87d81c62e9abb8790b6e5713c55ba679ee5320d66c8322e310daeb2ee99b8}\label{edge_8c_a06fc87d81c62e9abb8790b6e5713c55ba679ee5320d66c8322e310daeb2ee99b8}} 
+S\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+FT@{L\+E\+FT}!edge.\+c@{edge.\+c}}\index{edge.\+c@{edge.\+c}!L\+E\+FT@{L\+E\+FT}}}\mbox{\Hypertarget{edge_8c_a06fc87d81c62e9abb8790b6e5713c55badb45120aafd37a973140edee24708065}\label{edge_8c_a06fc87d81c62e9abb8790b6e5713c55badb45120aafd37a973140edee24708065}} 
+L\+E\+FT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+I\+G\+HT@{R\+I\+G\+HT}!edge.\+c@{edge.\+c}}\index{edge.\+c@{edge.\+c}!R\+I\+G\+HT@{R\+I\+G\+HT}}}\mbox{\Hypertarget{edge_8c_a06fc87d81c62e9abb8790b6e5713c55baec8379af7490bb9eaaf579cf17876f38}\label{edge_8c_a06fc87d81c62e9abb8790b6e5713c55baec8379af7490bb9eaaf579cf17876f38}} 
+R\+I\+G\+HT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+R\+A\+I\+G\+HT@{S\+T\+R\+A\+I\+G\+HT}!edge.\+c@{edge.\+c}}\index{edge.\+c@{edge.\+c}!S\+T\+R\+A\+I\+G\+HT@{S\+T\+R\+A\+I\+G\+HT}}}\mbox{\Hypertarget{edge_8c_a06fc87d81c62e9abb8790b6e5713c55ba08707fd429345dc72f3d7b0cc867ef05}\label{edge_8c_a06fc87d81c62e9abb8790b6e5713c55ba08707fd429345dc72f3d7b0cc867ef05}} 
+S\+T\+R\+A\+I\+G\+HT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{edge_8c_acb25f410377c3486ffd82b9d48b6071f}\label{edge_8c_acb25f410377c3486ffd82b9d48b6071f}} 
+\index{edge.\+c@{edge.\+c}!botinfo@{botinfo}}
+\index{botinfo@{botinfo}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{botinfo()}{botinfo()}}
+{\footnotesize\ttfamily char$\ast$ botinfo (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a4388e24cf515f134787861f2c4d09be7}\label{edge_8c_a4388e24cf515f134787861f2c4d09be7}} 
+\index{edge.\+c@{edge.\+c}!find\+\_\+nearest\+\_\+\+N\+\_\+dist@{find\+\_\+nearest\+\_\+\+N\+\_\+dist}}
+\index{find\+\_\+nearest\+\_\+\+N\+\_\+dist@{find\+\_\+nearest\+\_\+\+N\+\_\+dist}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{find\+\_\+nearest\+\_\+\+N\+\_\+dist()}{find\_nearest\_N\_dist()}}
+{\footnotesize\ttfamily uint8\+\_\+t find\+\_\+nearest\+\_\+\+N\+\_\+dist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a0c3c559f8dc2c318e09e9609c2241ea1}\label{edge_8c_a0c3c559f8dc2c318e09e9609c2241ea1}} 
+\index{edge.\+c@{edge.\+c}!follow\+\_\+edge@{follow\+\_\+edge}}
+\index{follow\+\_\+edge@{follow\+\_\+edge}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{follow\+\_\+edge()}{follow\_edge()}}
+{\footnotesize\ttfamily void follow\+\_\+edge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_aa1e8592ce585a7636d8387f6d9ce2005}\label{edge_8c_aa1e8592ce585a7636d8387f6d9ce2005}} 
+\index{edge.\+c@{edge.\+c}!get\+\_\+bot\+\_\+state@{get\+\_\+bot\+\_\+state}}
+\index{get\+\_\+bot\+\_\+state@{get\+\_\+bot\+\_\+state}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+bot\+\_\+state()}{get\_bot\_state()}}
+{\footnotesize\ttfamily int get\+\_\+bot\+\_\+state (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a9b12c2fd6b94ac72f0e788ede912841f}\label{edge_8c_a9b12c2fd6b94ac72f0e788ede912841f}} 
+\index{edge.\+c@{edge.\+c}!get\+\_\+dist\+\_\+by\+\_\+\+ID@{get\+\_\+dist\+\_\+by\+\_\+\+ID}}
+\index{get\+\_\+dist\+\_\+by\+\_\+\+ID@{get\+\_\+dist\+\_\+by\+\_\+\+ID}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+dist\+\_\+by\+\_\+\+I\+D()}{get\_dist\_by\_ID()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+dist\+\_\+by\+\_\+\+ID (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{bot }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_ac4622a252dbf9157160aec77cc919b5f}\label{edge_8c_ac4622a252dbf9157160aec77cc919b5f}} 
+\index{edge.\+c@{edge.\+c}!get\+\_\+move\+\_\+type@{get\+\_\+move\+\_\+type}}
+\index{get\+\_\+move\+\_\+type@{get\+\_\+move\+\_\+type}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+move\+\_\+type()}{get\_move\_type()}}
+{\footnotesize\ttfamily int get\+\_\+move\+\_\+type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_afe461d27b9c48d5921c00d521181f12f}\label{edge_8c_afe461d27b9c48d5921c00d521181f12f}} 
+\index{edge.\+c@{edge.\+c}!loop@{loop}}
+\index{loop@{loop}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{edge_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{edge.\+c@{edge.\+c}!main@{main}}
+\index{main@{main}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a7fe98b6e71da81f72143305f649beb63}\label{edge_8c_a7fe98b6e71da81f72143305f649beb63}} 
+\index{edge.\+c@{edge.\+c}!message\+\_\+tx@{message\+\_\+tx}}
+\index{message\+\_\+tx@{message\+\_\+tx}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{message\+\_\+tx()}{message\_tx()}}
+{\footnotesize\ttfamily message\+\_\+t$\ast$ message\+\_\+tx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_aaaa542ed11f0470f15a18b01754e7058}\label{edge_8c_aaaa542ed11f0470f15a18b01754e7058}} 
+\index{edge.\+c@{edge.\+c}!process\+\_\+message@{process\+\_\+message}}
+\index{process\+\_\+message@{process\+\_\+message}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{process\+\_\+message()}{process\_message()}}
+{\footnotesize\ttfamily void process\+\_\+message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a690a24778edc10152141d176d8561f17}\label{edge_8c_a690a24778edc10152141d176d8561f17}} 
+\index{edge.\+c@{edge.\+c}!purge\+Neighbors@{purge\+Neighbors}}
+\index{purge\+Neighbors@{purge\+Neighbors}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{purge\+Neighbors()}{purgeNeighbors()}}
+{\footnotesize\ttfamily void purge\+Neighbors (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a24c6617ac02c04b29d7e43735f5f9c46}\label{edge_8c_a24c6617ac02c04b29d7e43735f5f9c46}} 
+\index{edge.\+c@{edge.\+c}!receive\+\_\+inputs@{receive\+\_\+inputs}}
+\index{receive\+\_\+inputs@{receive\+\_\+inputs}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{receive\+\_\+inputs()}{receive\_inputs()}}
+{\footnotesize\ttfamily void receive\+\_\+inputs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a5760adaea4991d218d6cea8486847748}\label{edge_8c_a5760adaea4991d218d6cea8486847748}} 
+\index{edge.\+c@{edge.\+c}!rxbuffer\+\_\+push@{rxbuffer\+\_\+push}}
+\index{rxbuffer\+\_\+push@{rxbuffer\+\_\+push}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{rxbuffer\+\_\+push()}{rxbuffer\_push()}}
+{\footnotesize\ttfamily void rxbuffer\+\_\+push (\begin{DoxyParamCaption}\item[{message\+\_\+t $\ast$}]{msg,  }\item[{distance\+\_\+measurement\+\_\+t $\ast$}]{dist }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a4d2182f49c70e3be805d8d88d9530c09}\label{edge_8c_a4d2182f49c70e3be805d8d88d9530c09}} 
+\index{edge.\+c@{edge.\+c}!set\+\_\+bot\+\_\+state@{set\+\_\+bot\+\_\+state}}
+\index{set\+\_\+bot\+\_\+state@{set\+\_\+bot\+\_\+state}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+bot\+\_\+state()}{set\_bot\_state()}}
+{\footnotesize\ttfamily void set\+\_\+bot\+\_\+state (\begin{DoxyParamCaption}\item[{int}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a6f7537b0199d34b39bebe6e95067899f}\label{edge_8c_a6f7537b0199d34b39bebe6e95067899f}} 
+\index{edge.\+c@{edge.\+c}!set\+\_\+move\+\_\+type@{set\+\_\+move\+\_\+type}}
+\index{set\+\_\+move\+\_\+type@{set\+\_\+move\+\_\+type}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+move\+\_\+type()}{set\_move\_type()}}
+{\footnotesize\ttfamily void set\+\_\+move\+\_\+type (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a4fc01d736fe50cf5b977f755b675f11d}\label{edge_8c_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{edge.\+c@{edge.\+c}!setup@{setup}}
+\index{setup@{setup}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{edge_8c_a4bd27dd458300c3975a3182332ea7107}\label{edge_8c_a4bd27dd458300c3975a3182332ea7107}} 
+\index{edge.\+c@{edge.\+c}!setup\+\_\+message@{setup\+\_\+message}}
+\index{setup\+\_\+message@{setup\+\_\+message}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+message()}{setup\_message()}}
+{\footnotesize\ttfamily void setup\+\_\+message (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{edge_8c_a833cd7ecdaa408f530e259af777e1ad6}\label{edge_8c_a833cd7ecdaa408f530e259af777e1ad6}} 
+\index{edge.\+c@{edge.\+c}!callback\+\_\+botinfo@{callback\+\_\+botinfo}}
+\index{callback\+\_\+botinfo@{callback\+\_\+botinfo}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{callback\+\_\+botinfo}{callback\_botinfo}}
+{\footnotesize\ttfamily char$\ast$($\ast$ callback\+\_\+botinfo) (void)}
+
+\mbox{\Hypertarget{edge_8c_ae7abfd7efb0bff954a651ad1f174d993}\label{edge_8c_ae7abfd7efb0bff954a651ad1f174d993}} 
+\index{edge.\+c@{edge.\+c}!color\+Num@{color\+Num}}
+\index{color\+Num@{color\+Num}!edge.\+c@{edge.\+c}}
+\subsubsection{\texorpdfstring{color\+Num}{colorNum}}
+{\footnotesize\ttfamily uint8\+\_\+t color\+Num\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  RGB(0,0,0),  
+  RGB(1,0,0),  
+  RGB(0,1,0),  
+  RGB(0,0,1),  
+  RGB(1,1,0),  
+  RGB(0,1,1),  
+  RGB(1,0,1),  
+  RGB(2,1,0),  
+  RGB(1,1,1),  
+  RGB(3,3,3)   
+\}
+\end{DoxyCode}

@@ -1,0 +1,202 @@
+\hypertarget{edge_8h}{}\section{edge.\+h File Reference}
+\label{edge_8h}\index{edge.\+h@{edge.\+h}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for edge.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structNeighbor__t}{Neighbor\+\_\+t}
+\item 
+struct \hyperlink{structreceived__message__t}{received\+\_\+message\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{edge_8h_ae71449b1cc6e6250b91f539153a7a0d3}{M\+\_\+\+PI}~3.\+141592653589793238462643383279502884197169399375105820974944
+\item 
+\#define \hyperlink{edge_8h_a4dffe00c20bb169dffe579d803b4b04a}{G\+E\+N\+ES}~6
+\item 
+\#define \hyperlink{edge_8h_a581915fe331ff4930d4ebb5a529e895b}{D\+I\+F\+F\+G\+E\+N\+ES}~6
+\item 
+\#define \hyperlink{edge_8h_ad1f79d9d99776d7353c6659c307c83c6}{M\+A\+XN}~20
+\item 
+\#define \hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{R\+B\+\_\+\+S\+I\+ZE}~16
+\item 
+\#define \hyperlink{edge_8h_a8b89c7f039de1fc10a0d40fcd31f8806}{R\+B\+\_\+init}()
+\item 
+\#define \hyperlink{edge_8h_a0f26ae52dd3937aa013216ca00de8848}{R\+B\+\_\+empty}()~(mydata-\/$>$R\+X\+Head == mydata-\/$>$R\+X\+Tail)
+\item 
+\#define \hyperlink{edge_8h_a18c8648609790fd50f09aaf887a7b0eb}{R\+B\+\_\+full}()~((mydata-\/$>$R\+X\+Head+1)\%\hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{R\+B\+\_\+\+S\+I\+ZE} == mydata-\/$>$R\+X\+Tail)
+\item 
+\#define \hyperlink{edge_8h_a6bbf3674db76f84df8d200e5065c46de}{R\+B\+\_\+front}()~mydata-\/$>$R\+X\+Buffer\mbox{[}mydata-\/$>$R\+X\+Head\mbox{]}
+\item 
+\#define \hyperlink{edge_8h_ad8cbb1bb90ebe27912af67d49ff2fafa}{R\+B\+\_\+back}()~mydata-\/$>$R\+X\+Buffer\mbox{[}mydata-\/$>$R\+X\+Tail\mbox{]}
+\item 
+\#define \hyperlink{edge_8h_a5dda01c90053e46c3da2b6c492ad765c}{R\+B\+\_\+popfront}()~mydata-\/$>$R\+X\+Head = (mydata-\/$>$R\+X\+Head+1)\%\hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{R\+B\+\_\+\+S\+I\+ZE};
+\item 
+\#define \hyperlink{edge_8h_a53fb4c056ec9bb8155ee656b1f4f352f}{R\+B\+\_\+pushback}()
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219}{B\+O\+T\+T\+Y\+PE} \{ \hyperlink{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a990cd45e93be2b4661f3499e0a658a33}{L\+A\+ST}, 
+\hyperlink{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a53ef2dd603ff1fc0de66278342409826}{F\+O\+L\+L\+O\+W\+ER}, 
+\hyperlink{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a4990051f559aff868d672005e273eb89}{L\+E\+A\+D\+ER}
+ \}
+\item 
+enum \hyperlink{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1}{B\+O\+T\+S\+T\+A\+T\+ES} \{ \hyperlink{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1a79a322ccb4b29b85b3cab52dbccefd17}{W\+A\+IT}, 
+\hyperlink{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1a331ec9878c0ed22e62de969d4b96b5bb}{L\+I\+S\+T\+EN}, 
+\hyperlink{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1aed3ef32890b6da0919b57254c5206c62}{M\+O\+VE}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{edge_8h_ae9ddd6577fcb41581678c223a352f49b}{N\+Genes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{edge_8h_a581915fe331ff4930d4ebb5a529e895b}\label{edge_8h_a581915fe331ff4930d4ebb5a529e895b}} 
+\index{edge.\+h@{edge.\+h}!D\+I\+F\+F\+G\+E\+N\+ES@{D\+I\+F\+F\+G\+E\+N\+ES}}
+\index{D\+I\+F\+F\+G\+E\+N\+ES@{D\+I\+F\+F\+G\+E\+N\+ES}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{D\+I\+F\+F\+G\+E\+N\+ES}{DIFFGENES}}
+{\footnotesize\ttfamily \#define D\+I\+F\+F\+G\+E\+N\+ES~6}
+
+\mbox{\Hypertarget{edge_8h_a4dffe00c20bb169dffe579d803b4b04a}\label{edge_8h_a4dffe00c20bb169dffe579d803b4b04a}} 
+\index{edge.\+h@{edge.\+h}!G\+E\+N\+ES@{G\+E\+N\+ES}}
+\index{G\+E\+N\+ES@{G\+E\+N\+ES}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{G\+E\+N\+ES}{GENES}}
+{\footnotesize\ttfamily \#define G\+E\+N\+ES~6}
+
+\mbox{\Hypertarget{edge_8h_ae71449b1cc6e6250b91f539153a7a0d3}\label{edge_8h_ae71449b1cc6e6250b91f539153a7a0d3}} 
+\index{edge.\+h@{edge.\+h}!M\+\_\+\+PI@{M\+\_\+\+PI}}
+\index{M\+\_\+\+PI@{M\+\_\+\+PI}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+PI}{M\_PI}}
+{\footnotesize\ttfamily \#define M\+\_\+\+PI~3.\+141592653589793238462643383279502884197169399375105820974944}
+
+\mbox{\Hypertarget{edge_8h_ad1f79d9d99776d7353c6659c307c83c6}\label{edge_8h_ad1f79d9d99776d7353c6659c307c83c6}} 
+\index{edge.\+h@{edge.\+h}!M\+A\+XN@{M\+A\+XN}}
+\index{M\+A\+XN@{M\+A\+XN}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+XN}{MAXN}}
+{\footnotesize\ttfamily \#define M\+A\+XN~20}
+
+\mbox{\Hypertarget{edge_8h_ad8cbb1bb90ebe27912af67d49ff2fafa}\label{edge_8h_ad8cbb1bb90ebe27912af67d49ff2fafa}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+back@{R\+B\+\_\+back}}
+\index{R\+B\+\_\+back@{R\+B\+\_\+back}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+back}{RB\_back}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+back(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~mydata-\/$>$R\+X\+Buffer\mbox{[}mydata-\/$>$R\+X\+Tail\mbox{]}}
+
+\mbox{\Hypertarget{edge_8h_a0f26ae52dd3937aa013216ca00de8848}\label{edge_8h_a0f26ae52dd3937aa013216ca00de8848}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+empty@{R\+B\+\_\+empty}}
+\index{R\+B\+\_\+empty@{R\+B\+\_\+empty}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+empty}{RB\_empty}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+empty(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~(mydata-\/$>$R\+X\+Head == mydata-\/$>$R\+X\+Tail)}
+
+\mbox{\Hypertarget{edge_8h_a6bbf3674db76f84df8d200e5065c46de}\label{edge_8h_a6bbf3674db76f84df8d200e5065c46de}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+front@{R\+B\+\_\+front}}
+\index{R\+B\+\_\+front@{R\+B\+\_\+front}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+front}{RB\_front}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+front(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~mydata-\/$>$R\+X\+Buffer\mbox{[}mydata-\/$>$R\+X\+Head\mbox{]}}
+
+\mbox{\Hypertarget{edge_8h_a18c8648609790fd50f09aaf887a7b0eb}\label{edge_8h_a18c8648609790fd50f09aaf887a7b0eb}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+full@{R\+B\+\_\+full}}
+\index{R\+B\+\_\+full@{R\+B\+\_\+full}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+full}{RB\_full}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+full(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((mydata-\/$>$R\+X\+Head+1)\%\hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{R\+B\+\_\+\+S\+I\+ZE} == mydata-\/$>$R\+X\+Tail)}
+
+\mbox{\Hypertarget{edge_8h_a8b89c7f039de1fc10a0d40fcd31f8806}\label{edge_8h_a8b89c7f039de1fc10a0d40fcd31f8806}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+init@{R\+B\+\_\+init}}
+\index{R\+B\+\_\+init@{R\+B\+\_\+init}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+init}{RB\_init}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+init(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{   \(\backslash\)
+    mydata->RXHead = 0; \(\backslash\)
+    mydata->RXTail = 0;\(\backslash\)
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{edge_8h_a5dda01c90053e46c3da2b6c492ad765c}\label{edge_8h_a5dda01c90053e46c3da2b6c492ad765c}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+popfront@{R\+B\+\_\+popfront}}
+\index{R\+B\+\_\+popfront@{R\+B\+\_\+popfront}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+popfront}{RB\_popfront}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+popfront(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~mydata-\/$>$R\+X\+Head = (mydata-\/$>$R\+X\+Head+1)\%\hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{R\+B\+\_\+\+S\+I\+ZE};}
+
+\mbox{\Hypertarget{edge_8h_a53fb4c056ec9bb8155ee656b1f4f352f}\label{edge_8h_a53fb4c056ec9bb8155ee656b1f4f352f}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+pushback@{R\+B\+\_\+pushback}}
+\index{R\+B\+\_\+pushback@{R\+B\+\_\+pushback}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+pushback}{RB\_pushback}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+pushback(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{\(\backslash\)
+    mydata->RXTail = (mydata->RXTail+1)%\hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{RB\_SIZE};\(\backslash\)
+    if (\hyperlink{edge_8h_a0f26ae52dd3937aa013216ca00de8848}{RB\_empty}())\(\backslash\)
+      \{ mydata->RXHead = (mydata->RXHead+1)%\hyperlink{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}{RB\_SIZE}; \(\backslash\)
+    printf(\textcolor{stringliteral}{"Full.\(\backslash\)n"}); \}                \(\backslash\)
+  \}
+\end{DoxyCode}
+\mbox{\Hypertarget{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}\label{edge_8h_a4ab5f7800f96dec4076a4a0c8aa634b7}} 
+\index{edge.\+h@{edge.\+h}!R\+B\+\_\+\+S\+I\+ZE@{R\+B\+\_\+\+S\+I\+ZE}}
+\index{R\+B\+\_\+\+S\+I\+ZE@{R\+B\+\_\+\+S\+I\+ZE}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{R\+B\+\_\+\+S\+I\+ZE}{RB\_SIZE}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+\+S\+I\+ZE~16}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1}\label{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1}} 
+\index{edge.\+h@{edge.\+h}!B\+O\+T\+S\+T\+A\+T\+ES@{B\+O\+T\+S\+T\+A\+T\+ES}}
+\index{B\+O\+T\+S\+T\+A\+T\+ES@{B\+O\+T\+S\+T\+A\+T\+ES}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{B\+O\+T\+S\+T\+A\+T\+ES}{BOTSTATES}}
+{\footnotesize\ttfamily enum \hyperlink{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1}{B\+O\+T\+S\+T\+A\+T\+ES}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+IT@{W\+A\+IT}!edge.\+h@{edge.\+h}}\index{edge.\+h@{edge.\+h}!W\+A\+IT@{W\+A\+IT}}}\mbox{\Hypertarget{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1a79a322ccb4b29b85b3cab52dbccefd17}\label{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1a79a322ccb4b29b85b3cab52dbccefd17}} 
+W\+A\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+I\+S\+T\+EN@{L\+I\+S\+T\+EN}!edge.\+h@{edge.\+h}}\index{edge.\+h@{edge.\+h}!L\+I\+S\+T\+EN@{L\+I\+S\+T\+EN}}}\mbox{\Hypertarget{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1a331ec9878c0ed22e62de969d4b96b5bb}\label{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1a331ec9878c0ed22e62de969d4b96b5bb}} 
+L\+I\+S\+T\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+O\+VE@{M\+O\+VE}!edge.\+h@{edge.\+h}}\index{edge.\+h@{edge.\+h}!M\+O\+VE@{M\+O\+VE}}}\mbox{\Hypertarget{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1aed3ef32890b6da0919b57254c5206c62}\label{edge_8h_a684dfe224cbecbb5fbfeb4edd1464db1aed3ef32890b6da0919b57254c5206c62}} 
+M\+O\+VE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219}\label{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219}} 
+\index{edge.\+h@{edge.\+h}!B\+O\+T\+T\+Y\+PE@{B\+O\+T\+T\+Y\+PE}}
+\index{B\+O\+T\+T\+Y\+PE@{B\+O\+T\+T\+Y\+PE}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{B\+O\+T\+T\+Y\+PE}{BOTTYPE}}
+{\footnotesize\ttfamily enum \hyperlink{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219}{B\+O\+T\+T\+Y\+PE}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+A\+ST@{L\+A\+ST}!edge.\+h@{edge.\+h}}\index{edge.\+h@{edge.\+h}!L\+A\+ST@{L\+A\+ST}}}\mbox{\Hypertarget{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a990cd45e93be2b4661f3499e0a658a33}\label{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a990cd45e93be2b4661f3499e0a658a33}} 
+L\+A\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+O\+L\+L\+O\+W\+ER@{F\+O\+L\+L\+O\+W\+ER}!edge.\+h@{edge.\+h}}\index{edge.\+h@{edge.\+h}!F\+O\+L\+L\+O\+W\+ER@{F\+O\+L\+L\+O\+W\+ER}}}\mbox{\Hypertarget{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a53ef2dd603ff1fc0de66278342409826}\label{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a53ef2dd603ff1fc0de66278342409826}} 
+F\+O\+L\+L\+O\+W\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+A\+D\+ER@{L\+E\+A\+D\+ER}!edge.\+h@{edge.\+h}}\index{edge.\+h@{edge.\+h}!L\+E\+A\+D\+ER@{L\+E\+A\+D\+ER}}}\mbox{\Hypertarget{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a4990051f559aff868d672005e273eb89}\label{edge_8h_a696f9a742fa081d3d0fa1c77e0e16219a4990051f559aff868d672005e273eb89}} 
+L\+E\+A\+D\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{edge_8h_ae9ddd6577fcb41581678c223a352f49b}\label{edge_8h_ae9ddd6577fcb41581678c223a352f49b}} 
+\index{edge.\+h@{edge.\+h}!N\+Genes@{N\+Genes}}
+\index{N\+Genes@{N\+Genes}!edge.\+h@{edge.\+h}}
+\subsubsection{\texorpdfstring{N\+Genes}{NGenes}}
+{\footnotesize\ttfamily uint8\+\_\+t N\+Genes}
+

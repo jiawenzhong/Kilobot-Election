@@ -1,0 +1,11 @@
+This anonymous FTP area is intended for the use of staff and students
+associated with the University of Manitoba.
+
+If you wish to leave files here for a member of the University, please
+deposit them in the "incoming" directory, and notify the recipient so
+he may copy them from there.  Files older than ten days are automatically
+removed from the "incoming" directory.
+
+Use of this anonymous FTP area by staff and students of the University
+is subject to the University's policy on the use of computer facilities.
+

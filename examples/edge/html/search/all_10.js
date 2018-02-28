@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['send_5felected',['send_elected',['../structUSERDATA.html#abe61c104634e7f551a63e98c4dd4be80',1,'USERDATA']]],
+  ['send_5felection',['send_election',['../structUSERDATA.html#a001aed2103f59d4106c053f63c3adb60',1,'USERDATA::send_election()'],['../ring_8c.html#ab9082108a5add8649dfe4d65c7d7b676',1,'send_election():&#160;ring.c']]],
+  ['send_5fjoining',['send_joining',['../ring_8c.html#a1695dcc0c6a920317d739886e3266093',1,'ring.c']]],
+  ['send_5fmove',['send_move',['../ring_8c.html#a2116cdc18ec3be1de7691388d0a6d6a1',1,'ring.c']]],
+  ['send_5fsharing',['send_sharing',['../ring_8c.html#a95a8f45823e9116b153d0b1f7eaa6201',1,'ring.c']]],
+  ['send_5ftoken',['send_token',['../structUSERDATA.html#ac453af1691815ef29a28f1a3c46ae841',1,'USERDATA']]],
+  ['sender',['SENDER',['../ring_8h.html#afe3a5d0081166bd5e1d8c9ea00db83e5',1,'ring.h']]],
+  ['sent_5fstatus',['sent_status',['../structUSERDATA.html#a8fbbd806d97836ce1928cba2f58f6784',1,'USERDATA']]],
+  ['set_5fbot_5fstate',['set_bot_state',['../edge_8c.html#a4d2182f49c70e3be805d8d88d9530c09',1,'edge.c']]],
+  ['set_5fmotion',['set_motion',['../ring_8c.html#a88524e838112e1905cc3f74b0735ae71',1,'ring.c']]],
+  ['set_5fmove_5ftype',['set_move_type',['../edge_8c.html#a6f7537b0199d34b39bebe6e95067899f',1,'edge.c']]],
+  ['setup',['setup',['../edge_8c.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;edge.c'],['../ring_8c.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;ring.c']]],
+  ['setup_5fmessage',['setup_message',['../edge_8c.html#a4bd27dd458300c3975a3182332ea7107',1,'edge.c']]],
+  ['share',['SHARE',['../ring_8h.html#a4e0a9e26bf11796d8ca091cb6b3ce470a3754861e8c074fb088a2ed4f64786268',1,'ring.h']]],
+  ['sharing_5ftime',['SHARING_TIME',['../ring_8h.html#a8eb91fb063c5d18e88bb6c778f7de643',1,'ring.h']]],
+  ['simulator',['SIMULATOR',['../ring_8c.html#ad8a5d8c4e3342fb668142df792e93f38',1,'ring.c']]],
+  ['smooth_5fset_5fmotors',['smooth_set_motors',['../ring_8c.html#a540b8ce2367b2cf4b32c8b8c7e9642fc',1,'ring.c']]],
+  ['state',['state',['../structnearest__neighbor__t.html#a6888323805aed698b5485548a6b17390',1,'nearest_neighbor_t::state()'],['../structUSERDATA.html#aeed785c38cdfd9bc4356b47287f4cc33',1,'USERDATA::state()'],['../ring_8h.html#aacd2cf60f504e45efada9aec028ee3cd',1,'STATE():&#160;ring.h']]],
+  ['stop',['STOP',['../edge_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba679ee5320d66c8322e310daeb2ee99b8',1,'STOP():&#160;edge.c'],['../ring_8h.html#af714dce6622a529fd1e432cb0dbfe0a1a679ee5320d66c8322e310daeb2ee99b8',1,'STOP():&#160;ring.h']]],
+  ['straight',['STRAIGHT',['../edge_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba08707fd429345dc72f3d7b0cc867ef05',1,'edge.c']]]
+];
