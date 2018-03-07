@@ -335,6 +335,7 @@ void recv_election(uint8_t *payload){
         //printf("recv_election - w < m mydata->min_id %d\n", m);
         printf("recv_election - w < m mydata->my_id: %d mydata->min_id: %d MINID: %d\n" , v, mydata->min_id, w);
         mydata->send_election = TRUE;
+        mydata->blue = 0;
     // if new node id is not less than minimum, pass on the election
     } else if (w > m && mydata->sent_status == FALSE){
         printf("recv_election- w > m %d sending election MINID: %d\n", v, w);
@@ -366,14 +367,15 @@ void recv_election(uint8_t *payload){
   \param payload the message that is being pass around
 */
 void recv_elected(uint8_t *payload){
+    mydata->sent_status = FALSE;
     uint8_t w = payload[MINID];
     uint8_t v = mydata->my_id;
     printf("recv_elected - MINID: %d\n", w);
-    if (w != v){
-        //mydata->send_elected = FALSE;
+    if (w != v ){
+        mydata->send_elected = TRUE;
         printf("recv_elected - w != v id: %d\n", mydata->my_id);
         printf("not elected\n");
-        mydata->blue = 0;
+        mydata->red = 3;
     } /* else{
         mydata->blue = 3;
         mydata->send_elected = FALSE;
@@ -414,13 +416,15 @@ void message_rx(message_t *m, distance_measurement_t *d)
                 recv_move(m->data);
                 break;
             case ELECTED:// TODO: DONE
-                printf("message_rx: [ID]: %d my_left: %d\n", m->data[ID], mydata->my_left);
+                printf("message_rx elected: [ID]: %d my_left: %d\n", m->data[ID], mydata->my_left);
                 if(m->data[ID] == mydata->my_left){
                     recv_elected(m->data);
                     printf("message_rx - elected\n");
                 }
                 break;
             case ELECTION:// TODO: receive here??  FIX
+                printf("message_rx election: [ID]: %d my_left: %d\n", m->data[ID], mydata->my_left);
+
                 if(m->data[ID] == mydata->my_left){
                     recv_election(m->data);
                     printf("message_rx - election\n");
@@ -681,9 +685,9 @@ void loop()
     delay(30);
     send_election();
     //send_move();
-    send_joining();
     send_elected();
-    
+    send_joining();
+
     send_sharing();
 
     move(mydata->now);
