@@ -1,7 +1,7 @@
 {
     "botName" : "follow bot",
     "randSeed" : 1,
-    "nBots" : 3,
+    "nBots" : 7,
     "formation": "random",
     "timeStep" : 0.0416666,
     "simulationTime" : 0,
