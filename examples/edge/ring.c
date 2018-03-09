@@ -1,3 +1,4 @@
+// Jiawen zhong, Kaicie Messer, Eunice Chinchillla
 #define SIMULATOR
 
 
@@ -285,20 +286,6 @@ void recv_move(uint8_t *payload)
         mydata->send_token = mydata->now + TOKEN_TIME * 4.0;
 
     }
-   /* else if (my_id == payload[SENDER])
-    {
-        mydata->motion_state = STOP;
-    }
-    else
-    {
-        mydata->msg.data[MSG]      = payload[MSG];
-        mydata->msg.data[ID]       = mydata->my_id;
-        mydata->msg.data[RECEIVER] = payload[RECEIVER];
-        mydata->msg.data[SENDER]   = payload[SENDER];
-        mydata->msg.type           = NORMAL;
-        mydata->msg.crc            = message_crc(&msg);
-        mydata->message_sent       = 0;
-    } */
 }
 
 // TODO --------------------------------------------------------------------------------------------
@@ -316,18 +303,6 @@ void recv_election(uint8_t *payload){
 
     printf("recv_election - my_id: %d global min: %d, m: %d\n" , v,  w, m); 
     //if (payload[ID] == mydata->my_id  || payload[ID] == 0 ) return;
-
-
-    /* //if sender set me as left, set sender as my right
-    if (payload[LEFT_ID] == mydata->my_id)
-    {
-    	mydata->my_right = payload[SENDER];
-    }
-    //if sender set me as right, set sender as my left
-    if (payload[RIGHT_ID] == mydata->my_id)
-    {
-	    mydata->my_left = payload[SENDER];
-    } */
     
     //if global is less than local
     if(w < m){
@@ -340,7 +315,7 @@ void recv_election(uint8_t *payload){
     } else if (w > m && mydata->sent_status == FALSE){
         printf("recv_election- w > m %d sending election MINID: %d\n", v, w);
         payload[MINID] = m;
-        mydata->sent_status = TRUE;
+        mydata->sent_status = TRUE;//set status as true to indicate it has already participate
         mydata->send_election = TRUE;
     } else if (v == w){// a leader has elected
         printf("recv_election - v == w: my_id: %d sending elected MINID: %d\n" , v, w);
@@ -348,18 +323,6 @@ void recv_election(uint8_t *payload){
         mydata->blue = 3;
     }
 
-    /* if (w != v){
-        mydata->send_elected = FALSE;
-        mydata->blue = 0;
-        printf("recv_elected - w != v id: %d\n", mydata->my_id);
-        printf("not elected\n");
-        
-    } */
-
-
-    /* #ifdef SIMULATOR
-        printf("%d Left: %d Right: %d\n", mydata->my_id, mydata->my_left, mydata->my_right);
-    #endif */
 }
 
 //! get elected information and sets the color
@@ -376,11 +339,7 @@ void recv_elected(uint8_t *payload){
         printf("recv_elected - w != v id: %d\n", mydata->my_id);
         printf("not elected\n");
         mydata->red = 3;
-    } /* else{
-        mydata->blue = 3;
-        mydata->send_elected = FALSE;
-        printf("recv_elected - id: %d elected\n" , v); 
-    } */
+    } 
 
     #ifdef SIMULATOR
         printf("%d Left: %d Right: %d\n", mydata->my_id, mydata->my_left, mydata->my_right);
@@ -415,14 +374,14 @@ void message_rx(message_t *m, distance_measurement_t *d)
             case MOVE:
                 recv_move(m->data);
                 break;
-            case ELECTED:// TODO: DONE
+            case ELECTED:// go to receive elected when message is ELected tyep
                 printf("message_rx elected: [ID]: %d my_left: %d\n", m->data[ID], mydata->my_left);
                 if(m->data[ID] == mydata->my_left){
                     recv_elected(m->data);
                     printf("message_rx - elected\n");
                 }
                 break;
-            case ELECTION:// TODO: receive here??  FIX
+            case ELECTION:// go to receive election when message is election type
                 printf("message_rx election: [ID]: %d my_left: %d\n", m->data[ID], mydata->my_left);
 
                 if(m->data[ID] == mydata->my_left){
@@ -459,7 +418,7 @@ char enqueue_message(uint8_t m)
     
         // TODO: use the 8 bytes
         if(m == ELECTION || m == ELECTED){
-            //TODO: what is MINID? End of the byte in the payload, or declare in struct, data[minID] = midID FIX
+            //overrite the global minimum with the local minmum
             mydata->message[mydata->tail].data[MINID] = mydata->min_id;
         } else {
             // TODO: What do we put here??? for other stuff, ELECTED
@@ -472,13 +431,6 @@ char enqueue_message(uint8_t m)
         return 1;
     }
 
-    /* // TODO: use the 8 bytes
-    if(m == ELECTION || m == ELECTED){
-        //TODO: what is MINID? End of the byte in the payload, or declare in struct, data[minID] = midID FIX
-        mydata->message[mydata->tail].data[MINID] = mydata->min_id;
-    } else {
-        // TODO: What do we put here??? for other stuff, ELECTED
-    } */
     return 0;
 }
 
@@ -504,7 +456,7 @@ void send_joining()
             mydata->my_left = mydata->nearest_neighbors[i].id;
             // TODO: put it in the data structure
             enqueue_message(JOIN);
-            mydata->send_election = TRUE;
+            mydata->send_election = TRUE;//enable send_election
             //TODO: defind min_id = id FIX
             mydata->min_id = mydata->my_id;
 
@@ -552,7 +504,7 @@ void send_elected(){
     }
 }
 
-//! not being use in here
+//! send when bots are together
 void send_sharing()
 {
     // Precondition

@@ -90,10 +90,10 @@ typedef struct
     message_t message[QUEUE];
     message_t nullmessage;
 
-    int send_election;
-    int sent_status;
-    int send_elected;
-    uint8_t min_id;
+    int send_election; //flag to enable to send election
+    int sent_status; //flag to check if a bot has send the election
+    int send_elected; //flag to enable to send elected
+    uint8_t min_id; //store the minimum ID
 
     robot_state state;
     
